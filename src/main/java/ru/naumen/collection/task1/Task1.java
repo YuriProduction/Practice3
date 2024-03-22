@@ -1,7 +1,6 @@
 package ru.naumen.collection.task1;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * Дано:
@@ -23,19 +22,38 @@ import java.util.List;
  * <p>Метод должен быть оптимален по производительности.</p>
  * <p>Пользоваться можно только стандартными классами Java SE.
  * Коллекции collA, collB изменять запрещено.</p>
- *
+ * <p>
  * См. {@link User}
  *
  * @author vpyzhyanov
  * @since 19.10.2023
  */
-public class Task1 {
+public class Task1
+{
+    public static void main(String[] args)
+    {
+
+    }
 
     /**
      * Возвращает дубликаты пользователей, которые есть в обеих коллекциях
      */
-    public static List<User> findDuplicates(Collection<User> collA, Collection<User> collB) {
-        // TODO
-        return null;
+    public static List<User> findDuplicates(Collection<User> collA, Collection<User> collB)
+    {
+        List<User> users = new ArrayList<>();
+        Set<User> collAUsers = new LinkedHashSet<>(collA); //LinkedHashSet = быстрая итерация
+        for (User user : collB)
+        {
+            if (collAUsers.contains(user)) //почитал документацию contains - сверяет по equals => нам подходит
+            {
+                users.add(user);
+            }
+        }
+        //Сложность операции сначала O(n), где n - кол-во элементов в collA, т.к. пришлось перекопировать их в LinkedHashSet
+        //Далее идем по collB, получаем O(m)
+        //Периодически массив users расширяется, поэтому добавляем еще O(n)
+        //Итоговая сложность O(n)
+        return users;
     }
+
 }
