@@ -1,5 +1,8 @@
 package ru.naumen.collection.task2;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Дано:
  * <pre>
@@ -22,7 +25,27 @@ package ru.naumen.collection.task2;
  * @author vpyzhyanov
  * @since 19.10.2023
  */
-public class Task2 {
+public class Task2
+{
 
-    // TODO
+    public static void main(String[] args)
+    {
+        Map<Ticket, PackageOfGoods> barmenBook = fillBarmenBook();
+        List<Ticket> ticketList = List.of(new Ticket(2, "Anton"),
+                new Ticket(1, "Vitali"),
+                new Ticket(3, "Elena"));
+        for (final Ticket ticket : ticketList)
+        {
+            System.out.println(barmenBook.get(ticket).getTitle());
+        }
+        //Выбрал Map, так как мгновенно получаем объект по ключу (за исключением коллизии)
+        //Сложность каждого get = O(1) => общая сложность O(n), где n - число гостей мероприятия
+    }
+
+    private static Map<Ticket, PackageOfGoods> fillBarmenBook()
+    {
+        return Map.of(new Ticket(1, "Vitali"), PackageOfGoods.NO_GOOD,
+                new Ticket(2, "Anton"), PackageOfGoods.DRINKS,
+                new Ticket(3, "Elena"), PackageOfGoods.EAT_AND_DRINKS);
+    }
 }
