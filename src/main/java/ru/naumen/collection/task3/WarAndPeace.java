@@ -61,7 +61,7 @@ public class WarAndPeace
         for (Map.Entry<String, Integer> en : wordsDictionary.entrySet())
         {
             sortedWordsByFrequency.add(new Word(en.getValue(), en.getKey()));
-        }//O(m), где m - размер словаря
+        }//O(log(m)*m), где m - размер словаря
 
         //Наименее используемые 10 слов
         final Iterator<Word> iteratorBack = sortedWordsByFrequency.descendingIterator();
@@ -76,6 +76,6 @@ public class WarAndPeace
             System.out.println(iteratorUP.next());
         }
 
-        //Итог O(n*log(n)+m+20) ~ O(n*log(n)), n - кол-во строк в файле
+        //Итог O(n*log(n)+log(m)*m+20) ~ O(n*log(n)), n - кол-во строк в файле
     }
 }
