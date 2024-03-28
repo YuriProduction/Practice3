@@ -41,7 +41,7 @@ public class Task1
     public static List<User> findDuplicates(Collection<User> collA, Collection<User> collB)
     {
         List<User> users = new ArrayList<>();
-        Set<User> collAUsers = new LinkedHashSet<>(collA); //LinkedHashSet = быстрая итерация
+        Set<User> collAUsers = new HashSet<>(collA);
         for (User user : collB)
         {
             if (collAUsers.contains(user)) //почитал документацию contains - сверяет по equals => нам подходит
@@ -49,7 +49,7 @@ public class Task1
                 users.add(user);
             }
         }
-        //Сложность операции сначала O(n), где n - кол-во элементов в collA, т.к. пришлось перекопировать их в LinkedHashSet
+        //Сложность операции сначала O(n), где n - кол-во элементов в collA, т.к. пришлось перекопировать их в  HashSet
         //Далее идем по collB, получаем O(m)
         //Периодически массив users расширяется, поэтому добавляем еще O(n)
         //Итоговая сложность O(n)

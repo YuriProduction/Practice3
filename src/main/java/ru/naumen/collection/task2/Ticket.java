@@ -25,12 +25,12 @@ public class Ticket
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
-        return id == ticket.id && client.equals(ticket.client);
+        return id == ticket.id;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(id, client);
+        return (int) id;
     }
 }

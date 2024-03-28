@@ -64,16 +64,16 @@ public class WarAndPeace
         }//O(log(m)*m), где m - размер словаря
 
         //Наименее используемые 10 слов
-        final Iterator<Word> iteratorBack = sortedWordsByFrequency.descendingIterator();
+        Iterator<Word> iterator = sortedWordsByFrequency.descendingIterator();
         for (int i = 0; i < 10; i++)
         {
-            System.out.println(iteratorBack.next());
+            System.out.println(iterator.next());
         }
         //Наиболее используемые 10 слов
-        final Iterator<Word> iteratorUP = sortedWordsByFrequency.iterator();
+        iterator = sortedWordsByFrequency.iterator();
         for (int i = 0; i < 10; i++)
         {
-            System.out.println(iteratorUP.next());
+            System.out.println(iterator.next());
         }
 
         //Итог O(n*log(n)+log(m)*m+20) ~ O(n*log(n)), n - кол-во строк в файле
